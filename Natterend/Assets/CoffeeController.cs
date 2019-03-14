@@ -7,20 +7,25 @@ public class CoffeeController : MonoBehaviour
     public float maxCoffeeTime = 100;
     float curCoffeeTime;
 
+    public GameObject[] coffeeBar;
+    int curCoffeeBar;
 
     public float maxTimeBeforeLoss = 10;
     float curTimeBeforeLoss;
 
     void Awake()
     {
+        curCoffeeBar = coffeeBar.Length;
         curTimeBeforeLoss = maxTimeBeforeLoss;
-        curCoffeeTime = maxCoffeeTime;
+        curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(curCoffeeTime);
+        if (curCoffeeBar <= 0)
+            return;
+
         if (curTimeBeforeLoss <= 0)
         {
             curCoffeeTime -= Time.deltaTime;
@@ -32,19 +37,30 @@ public class CoffeeController : MonoBehaviour
 
         if (curCoffeeTime <= 0)
         {
+            coffeeBar[curCoffeeBar - 1].SetActive(false);
+            curCoffeeBar--;
+            curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
+        }
+
+        if (curCoffeeBar <= 0)
+        {
             CoffeeEmpty();
         }
     }
 
     public void RefreshCoffee()
     {
-        curCoffeeTime = maxCoffeeTime;
+        curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
+        curCoffeeBar = coffeeBar.Length;       
         curTimeBeforeLoss = maxTimeBeforeLoss;
-        Debug.Log("Refreshed");
+        for (int i = 0; i < coffeeBar.Length; i++)
+        {
+            coffeeBar[i].SetActive(true);
+        }
     }
 
     void CoffeeEmpty()
     {
-
+        // do some shiitttt
     }
 }

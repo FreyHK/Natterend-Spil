@@ -11,7 +11,7 @@ public class CoffeeMachine : MonoBehaviour
         RefreshCoffee();
     }
 
-    void RefreshCoffee()
+    public void RefreshCoffee()
     {      
         player.GetComponent<CoffeeController>().RefreshCoffee();
     }
