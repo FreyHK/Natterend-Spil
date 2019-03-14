@@ -7,6 +7,7 @@ public class CoffeeController : MonoBehaviour
     public float maxCoffeeTime = 100;
     float curCoffeeTime;
 
+    public GameObject[] coffeeBar;
 
     public float maxTimeBeforeLoss = 10;
     float curTimeBeforeLoss;
@@ -34,6 +35,7 @@ public class CoffeeController : MonoBehaviour
         {
             CoffeeEmpty();
         }
+
     }
 
     public void RefreshCoffee()
