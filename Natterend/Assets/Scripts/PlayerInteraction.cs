@@ -36,10 +36,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void UpdateTarget()
     {
-        RaycastHit hit;
-        bool interact = false;
-        if (Physics.Raycast(CameraTransform.position, CameraTransform.forward, out hit, range, hitMask)
-            && hit.collider.CompareTag("Interactable"))
+        if (Physics.Raycast(CameraTransform.position, CameraTransform.forward, out RaycastHit hit, range, hitMask))
         {
             currentTarget = hit.collider.GetComponent<Interactable>();
         }

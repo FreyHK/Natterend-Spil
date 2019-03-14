@@ -3,11 +3,16 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
+
+    public string Key = "check";
+
     public UnityEvent OnInteract;
 
     public void Interact()
     {
-        print("OnInteract");
-        OnInteract.Invoke();
+        if (TaskController.Instance.CompleteTask(Key))
+        {
+            OnInteract.Invoke();
+        }
     }
 }

@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
-  m_Layer: 0
-  m_Name: FPSController
+  - component: {fileID: 1585654206}
+  m_Layer: 10
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,13 +74,13 @@ MonoBehaviour:
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    XSensitivity: 4
+    YSensitivity: 4
     clampVerticalRotation: 1
     MinimumX: -90
     MaximumX: 90
     smooth: 0
-    smoothTime: 5
+    smoothTime: 15
     lockCursor: 1
   m_UseFovKick: 0
   m_FovKick:
@@ -289,6 +290,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1585654206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73778f8e18d84cc98cf1529b2432d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraTransform: {fileID: 400002}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +318,8 @@ GameObject:
   - component: {fileID: 2000000}
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
-  m_Layer: 0
+  - component: {fileID: 1481978705}
+  m_Layer: 10
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -381,6 +399,22 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
+--- !u!114 &1481978705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73778f8e18d84cc98cf1529b2432d25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraTransform: {fileID: 400002}
+  hitMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &1961433955
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1961433956}
   - component: {fileID: 1961433957}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,20 +19,22 @@ public class TaskController : MonoBehaviour
 
     int curTaskIndex = 0;
 
+    public static TaskController Instance;
 
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
         UpdateHUD();
     }
 
-    public void CompleteTask (string key)
+    public bool CompleteTask (string key)
     {
 
-        print("Key: " + key + ", TargetKey: " + Tasks[curTaskIndex].Key);
+        //print("Key: " + key + ", TargetKey: " + Tasks[curTaskIndex].Key);
 
         if (key == Tasks[curTaskIndex].Key)
         {
-            print("Completed task '" + Tasks[curTaskIndex].Header + "'.");
+            //print("Completed task '" + Tasks[curTaskIndex].Header + "'.");
 
             Tasks[curTaskIndex].Completed = true;
             curTaskIndex++;
@@ -43,7 +45,9 @@ public class TaskController : MonoBehaviour
             {
                 print("Completed all tasks.");
             }
+            return true;
         }
+        return false;
     }
 
     void UpdateHUD()
