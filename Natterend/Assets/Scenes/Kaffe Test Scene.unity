@@ -917,6 +917,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCoffeeTime: 10
+  coffeeBar:
+  - {fileID: 612947142}
+  - {fileID: 20774141}
+  - {fileID: 1821602092}
+  - {fileID: 764125953}
+  - {fileID: 698133764}
   maxTimeBeforeLoss: 2
 --- !u!4 &2092527229 stripped
 Transform:
