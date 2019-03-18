@@ -43,7 +43,7 @@ public class TaskController : MonoBehaviour
 
             if (curTaskIndex > Tasks.Length-1)
             {
-                print("Completed all tasks.");
+                GameInitializer.Instance.LoadGameWon();
             }
             return true;
         }
