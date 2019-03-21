@@ -10,11 +10,6 @@ public class PlayerInteraction : MonoBehaviour
 
     float range = 2.5f;
 
-    void Start()
-    {
-        
-    }
-
     Interactable currentTarget = null;
 
     void Update()
@@ -23,14 +18,9 @@ public class PlayerInteraction : MonoBehaviour
 
         HUDController.Instance.ShowInteractText(currentTarget != null);
 
-        if (currentTarget != null)
-        {
-            print("Interactable: " + currentTarget.name);
+        if (currentTarget != null && Input.GetKeyDown(KeyCode.E)) {
 
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                currentTarget.Interact();
-            }
+            currentTarget.Interact();
         }
     }
 
