@@ -848,6 +848,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: m_Name
+      value: RigidBodyFPSController
+      objectReference: {fileID: 0}
     - target: {fileID: 2151737643618090819, guid: c6453f8e1f814744d8b94e5a6d1f9942,
         type: 3}
       propertyPath: coffeeBar.Array.data[0]
@@ -873,10 +877,6 @@ PrefabInstance:
       propertyPath: coffeeBar.Array.data[4]
       value: 
       objectReference: {fileID: 612947142}
-    - target: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
-      propertyPath: m_Name
-      value: RigidBodyFPSController
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
