@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CoffeeController : MonoBehaviour
 {
-    public float maxCoffeeTime = 100;
+    public float maxCoffeeTime = 120f;
     float curCoffeeTime;
 
     public GameObject[] coffeeBar;
     int curCoffeeBar;
 
-    public float maxTimeBeforeLoss = 10;
+    public float maxTimeBeforeLoss = 20f;
     float curTimeBeforeLoss;
 
     void Awake()
@@ -20,7 +20,6 @@ public class CoffeeController : MonoBehaviour
         curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (curCoffeeBar <= 0)

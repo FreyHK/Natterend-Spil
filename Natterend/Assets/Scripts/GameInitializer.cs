@@ -94,6 +94,8 @@ public class GameInitializer : MonoBehaviour
         //Remember loaded scene (used when unloading)
         loadedScene = SceneManager.GetSceneAt(1);
 
+        SceneManager.SetActiveScene(loadedScene);
+
         //Reset flag
         IsLoading = false;
 
