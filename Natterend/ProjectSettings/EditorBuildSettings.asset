@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene.unity
     guid: 235b52ce577d447f0b00b9dcd935f3ed
   - enabled: 1
-    path: Assets/Scenes/MissionTestScene.unity
-    guid: 6292c812fc7d9400daa23ab9ff5d736b
+    path: Assets/Scenes/SchoolNew.unity
+    guid: 77ce31654d428413989923047bb9e108
   - enabled: 1
     path: Assets/Scenes/GameWin.unity
     guid: 344e1a93f4636492d991c2a4acc3a040
