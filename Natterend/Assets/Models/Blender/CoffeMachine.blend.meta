@@ -1,16 +1,15 @@
 fileFormatVersion: 2
-guid: 6e3680a620f73594cba5ae78657c5734
+guid: 14a85ed7bf26b2243929dc0f84fbe2ed
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: unnamed
-    2100002: Lamp
-    2100004: Wire
+    2100000: Canister
+    2100002: Handle
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Sphere_001
+    4300000: Cube
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
@@ -50,8 +49,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -73,7 +72,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 0
+    blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
