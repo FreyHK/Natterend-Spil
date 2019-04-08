@@ -9,6 +9,7 @@ public class TaskController : MonoBehaviour
     {
         public string Header = "Header";
         public string Key = "Key";
+        public Interactable Interactable;
 
         [HideInInspector]
         public bool Completed = false;
@@ -17,28 +18,39 @@ public class TaskController : MonoBehaviour
     [SerializeField]
     Task[] Tasks;
 
-    int curTaskIndex;
+    int curTaskIndex = -1;
 
     public static TaskController Instance;
 
     private void Awake()
     {
         Instance = this;
-        curTaskIndex = 0;
+        GetNextTask();
         UpdateHUD();
+    }
+
+    void GetNextTask()
+    {
+        curTaskIndex++;
+
+        Tasks[curTaskIndex].Interactable.SetSelected(true);
+    }
+
+    void CompleteCurrentTask()
+    {
+        Tasks[curTaskIndex].Completed = true;
+        Tasks[curTaskIndex].Interactable.SetSelected(false);
+
+        //print("Completed task '" + Tasks[curTaskIndex].Header + "'.");
     }
 
     public bool CompleteTask (string key)
     {
-
-        //print("Key: " + key + ", TargetKey: " + Tasks[curTaskIndex].Key);
-
         if (key == Tasks[curTaskIndex].Key)
         {
-            //print("Completed task '" + Tasks[curTaskIndex].Header + "'.");
+            CompleteCurrentTask();
 
-            Tasks[curTaskIndex].Completed = true;
-            curTaskIndex++;
+            GetNextTask();
 
             UpdateHUD();
 
@@ -59,6 +71,5 @@ public class TaskController : MonoBehaviour
             HUDController.Instance.SetHeader(Tasks[curTaskIndex].Header);
         }else
             HUDController.Instance.SetHeader("");
-
     }
 }

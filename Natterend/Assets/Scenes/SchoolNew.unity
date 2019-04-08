@@ -1383,7 +1383,6 @@ Transform:
   - {fileID: 1644512975}
   - {fileID: 947211717}
   - {fileID: 603273477}
-  - {fileID: 424780579}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2324,6 +2323,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1 &231513659
 GameObject:
   m_ObjectHideFlags: 0
@@ -4005,36 +4005,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 421185322}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &424780578
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 424780579}
-  m_Layer: 0
-  m_Name: TaskInteractables
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &424780579
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424780578}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 118070180}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &439100530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6712,6 +6682,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1001 &739468665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8614,18 +8585,23 @@ MonoBehaviour:
   Tasks:
   - Header: Check ur homework dumbass
     Key: check
+    Interactable: {fileID: 1725553587}
     Completed: 0
   - Header: Get ur laptop
     Key: getlaptop
+    Interactable: {fileID: 225118963}
     Completed: 0
   - Header: Work
     Key: work
+    Interactable: {fileID: 1209906611}
     Completed: 0
   - Header: Print homework.
     Key: print
+    Interactable: {fileID: 1640671067}
     Completed: 0
   - Header: Go to sleep
     Key: sleep
+    Interactable: {fileID: 1284286684}
     Completed: 0
 --- !u!1001 &935886484
 PrefabInstance:
@@ -10593,6 +10569,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1001 &1219062468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11174,6 +11151,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1001 &1289794838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14503,6 +14481,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1 &1644512974
 GameObject:
   m_ObjectHideFlags: 0
@@ -14949,6 +14928,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
 --- !u!1 &1727379680
 GameObject:
   m_ObjectHideFlags: 0
