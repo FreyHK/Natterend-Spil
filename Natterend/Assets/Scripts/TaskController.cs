@@ -17,13 +17,14 @@ public class TaskController : MonoBehaviour
     [SerializeField]
     Task[] Tasks;
 
-    int curTaskIndex = 0;
+    int curTaskIndex;
 
     public static TaskController Instance;
 
     private void Awake()
     {
         Instance = this;
+        curTaskIndex = 0;
         UpdateHUD();
     }
 
