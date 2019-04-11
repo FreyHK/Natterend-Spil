@@ -29,6 +29,7 @@ public class TeacherController : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
 
         GetNewWaypoint();
+        agent.SetDestination(waypoints[curWaypoint].position);
     }
 
     void Update()
@@ -55,13 +56,13 @@ public class TeacherController : MonoBehaviour
             return;
         }
 
-
         Vector3 target = waypoints[curWaypoint].position;
 
         if (Vector3.Distance(transform.position, target) < 2f)
         {
             //print("Reached point " + curWaypoint.ToString());
             GetNewWaypoint();
+            agent.SetDestination(waypoints[curWaypoint].position);
         }
     }
 
@@ -77,55 +78,36 @@ public class TeacherController : MonoBehaviour
         //print("LastWaypoint: " + curWaypoint);
         curWaypoint = list[Random.Range(0, list.Count)];
         //print("NextWaypoint: " + curWaypoint);
-
-        agent.SetDestination(waypoints[curWaypoint].position);
     }
-
-    Vector3 lastSpotted = Vector3.zero;
 
     void Chasing()
     {
-        if (lastSpotted == Vector3.zero)
+        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        if (dist < SightRange)
         {
-            float dist = Vector3.Distance(transform.position, playerTransform.position);
-            if (dist < SightRange)
+            //Mark new player position
+            agent.SetDestination(playerTransform.position);
+
+            //Did we reach player?
+            if (dist < 2f)
             {
-                //Mark new player position
-                lastSpotted = playerTransform.position;
-                agent.SetDestination(lastSpotted);
+                GameInitializer.Instance.LoadGameOver();
             }
-            else
-            {
-                //We cant see player, start patrolling
-                currentState = State.Patrolling;
-            }
+        }
+        else
+        {
+            //We cant see player, start patrolling
+            currentState = State.Patrolling;
+            //Set target
+            agent.SetDestination(waypoints[curWaypoint].position);
+
             return;
-        }
-
-        float d = Vector3.Distance(transform.position, playerTransform.position);
-        //Did we reach player?
-        if (d < 2f)
-        {
-            GameInitializer.Instance.LoadGameOver();
-        }
-
-        d = Vector3.Distance(transform.position, lastSpotted);
-        //Did we reach target point?
-        if (d < 2f)
-        {
-            //Get new point
-            lastSpotted = Vector3.zero;
         }
     }
 
     private void OnDrawGizmos()
     {
-        if (currentState == State.Chasing)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(lastSpotted, 1f);
-        }
-        else if (curWaypoint != -1)
+        if (curWaypoint != -1)
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawSphere(waypoints[curWaypoint].position, 1f);

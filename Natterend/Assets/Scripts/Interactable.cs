@@ -11,13 +11,8 @@ public class Interactable : MonoBehaviour
 
     public Material OnSelectedMaterial;
 
-    MeshRenderer renderer;
+    public MeshRenderer renderer;
     Material[] mats;
-
-    private void Awake()
-    {
-        renderer = transform.parent.GetComponentInChildren<MeshRenderer>();
-    }
 
     public void SetSelected(bool s)
     {
@@ -33,10 +28,7 @@ public class Interactable : MonoBehaviour
         else
         {
             //Set back to original
-            for (int i = 0; i < mats.Length; i++)
-            {
-                renderer.materials = mats;
-            }
+            renderer.materials = mats;
         }
     }
 
