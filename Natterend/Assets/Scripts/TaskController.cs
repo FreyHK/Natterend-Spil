@@ -33,7 +33,8 @@ public class TaskController : MonoBehaviour
     {
         curTaskIndex++;
 
-        Tasks[curTaskIndex].Interactable.SetSelected(true);
+        if (curTaskIndex < Tasks.Length)
+            Tasks[curTaskIndex].Interactable.SetSelected(true);
     }
 
     void CompleteCurrentTask()
@@ -54,7 +55,7 @@ public class TaskController : MonoBehaviour
 
             UpdateHUD();
 
-            if (curTaskIndex > Tasks.Length-1)
+            if (curTaskIndex == Tasks.Length)
             {
                 GameInitializer.Instance.LoadGameWon();
             }
