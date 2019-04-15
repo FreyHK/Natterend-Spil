@@ -16,7 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         UpdateTarget();
 
-        HUDController.Instance.ShowInteractText(currentTarget != null);
+        HUDController.Instance.ShowInteractText(currentTarget != null && currentTarget.CanInteract());
 
         if (currentTarget != null && Input.GetKeyDown(KeyCode.E)) {
 

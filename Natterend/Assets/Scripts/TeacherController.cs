@@ -7,8 +7,10 @@ public class TeacherController : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform[] waypoints;
+    //All children of this transform are waypoints.
+    public Transform waypointParent;
 
+    Transform[] waypoints;
     float SightRange = 10f;
 
     int lastWaypoint = -1;
@@ -27,6 +29,12 @@ public class TeacherController : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
+
+        waypoints = new Transform[waypointParent.childCount];
+        for (int i = 0; i < waypointParent.childCount; i++)
+        {
+            waypoints[i] = waypointParent.GetChild(i);
+        }
 
         GetNewWaypoint();
         agent.SetDestination(waypoints[curWaypoint].position);
@@ -75,9 +83,7 @@ public class TeacherController : MonoBehaviour
                 list.Add(i);
         }
         lastWaypoint = curWaypoint;
-        //print("LastWaypoint: " + curWaypoint);
         curWaypoint = list[Random.Range(0, list.Count)];
-        //print("NextWaypoint: " + curWaypoint);
     }
 
     void Chasing()
