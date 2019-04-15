@@ -17,7 +17,8 @@ public class GameInitializer : MonoBehaviour
 
     LoadSceneParameters loadParameters = new LoadSceneParameters(LoadSceneMode.Additive);
 
-    private void Start() {
+    private void Start()
+    {
         Instance = this;
 
         //Hide overlayimage

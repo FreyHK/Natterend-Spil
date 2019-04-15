@@ -415,6 +415,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1 &197156659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1169,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1 &904863067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1420,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1 &1046593825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,6 +1518,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1 &1100585844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2310,6 +2318,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1 &1784862979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,18 +2424,23 @@ MonoBehaviour:
   Tasks:
   - Header: Check ur homework dumbass
     Key: check
+    Interactable: {fileID: 0}
     Completed: 0
   - Header: Get ur laptop
     Key: getlaptop
+    Interactable: {fileID: 0}
     Completed: 0
   - Header: Work
     Key: work
+    Interactable: {fileID: 0}
     Completed: 0
   - Header: Print homework.
     Key: print
+    Interactable: {fileID: 0}
     Completed: 0
   - Header: Go to sleep
     Key: sleep
+    Interactable: {fileID: 0}
     Completed: 0
 --- !u!4 &1803456226
 Transform:
@@ -2548,6 +2563,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnSelectedMaterial: {fileID: 0}
+  renderer: {fileID: 0}
 --- !u!1001 &2010202429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2602,6 +2619,10 @@ PrefabInstance:
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: movementSettings.RunMultiplier
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
