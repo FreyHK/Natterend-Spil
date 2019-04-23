@@ -7,8 +7,12 @@ public class TeacherController : MonoBehaviour
 {
     public NavMeshAgent agent;
 
-    public Transform[] waypoints;
+    //All children of this transform are waypoints.
+    public Transform waypointParent;
 
+    public Transform SightOrigin;
+
+    Transform[] waypoints;
     float SightRange = 10f;
 
     int lastWaypoint = -1;
@@ -27,6 +31,12 @@ public class TeacherController : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
+
+        waypoints = new Transform[waypointParent.childCount];
+        for (int i = 0; i < waypointParent.childCount; i++)
+        {
+            waypoints[i] = waypointParent.GetChild(i);
+        }
 
         GetNewWaypoint();
         agent.SetDestination(waypoints[curWaypoint].position);
@@ -75,19 +85,17 @@ public class TeacherController : MonoBehaviour
                 list.Add(i);
         }
         lastWaypoint = curWaypoint;
-        //print("LastWaypoint: " + curWaypoint);
         curWaypoint = list[Random.Range(0, list.Count)];
-        //print("NextWaypoint: " + curWaypoint);
     }
 
     void Chasing()
     {
-        float dist = Vector3.Distance(transform.position, playerTransform.position);
-        if (dist < SightRange)
+        if (CanSeePlayer())
         {
             //Mark new player position
             agent.SetDestination(playerTransform.position);
 
+            float dist = Vector3.Distance(transform.position, playerTransform.position);
             //Did we reach player?
             if (dist < 2f)
             {
@@ -96,13 +104,36 @@ public class TeacherController : MonoBehaviour
         }
         else
         {
-            //We cant see player, start patrolling
+            //We can't see player, start patrolling
             currentState = State.Patrolling;
             //Set target
             agent.SetDestination(waypoints[curWaypoint].position);
 
             return;
         }
+    }
+
+    bool CanSeePlayer()
+    {
+        //Is player close enought?
+        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        if (dist > SightRange)
+            return false;
+
+        //Do we have direct line of sight?
+        Vector3 dir = (playerTransform.position + Vector3.up * 1.5f) - SightOrigin.position;
+        RaycastHit[] hits = Physics.RaycastAll(SightOrigin.position, dir, dist);
+       
+        for (int i = 0; i < hits.Length; i++)
+        {
+            print("Hit " + hits[i].collider.name);
+            //Did we hit anything besides ourselves and player?
+            if (hits[i].transform != playerTransform && hits[i].transform != transform)
+                //Then sight is blocked.
+                return false;
+        }
+
+        return true;
     }
 
     private void OnDrawGizmos()

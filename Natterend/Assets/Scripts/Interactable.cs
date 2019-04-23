@@ -16,12 +16,11 @@ public class Interactable : MonoBehaviour
 
     public void SetSelected(bool s)
     {
-        print("Set selected: " + s.ToString() + ", " + transform.parent.name);
+        //print("Set selected: " + s.ToString() + ", " + transform.parent.name);
         if (s)
         {
             //Remember original materials
             mats = renderer.materials;
-
             //Set new
             renderer.material = OnSelectedMaterial;
         }
@@ -34,9 +33,15 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (TaskController.Instance.CompleteTask(Key) || !Conditional)
+        if (CanInteract() || !Conditional)
         {
+            TaskController.Instance.CompleteTask(Key);
             OnInteract.Invoke();
         }
+    }
+
+    public bool CanInteract()
+    {
+        return TaskController.Instance.GetCurrentKey() == Key;
     }
 }

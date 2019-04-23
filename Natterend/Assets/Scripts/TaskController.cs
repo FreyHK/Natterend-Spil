@@ -33,15 +33,14 @@ public class TaskController : MonoBehaviour
     {
         curTaskIndex++;
 
-        Tasks[curTaskIndex].Interactable.SetSelected(true);
+        if (curTaskIndex < Tasks.Length)
+            Tasks[curTaskIndex].Interactable.SetSelected(true);
     }
 
     void CompleteCurrentTask()
     {
         Tasks[curTaskIndex].Completed = true;
         Tasks[curTaskIndex].Interactable.SetSelected(false);
-
-        //print("Completed task '" + Tasks[curTaskIndex].Header + "'.");
     }
 
     public bool CompleteTask (string key)
@@ -54,7 +53,7 @@ public class TaskController : MonoBehaviour
 
             UpdateHUD();
 
-            if (curTaskIndex > Tasks.Length-1)
+            if (curTaskIndex == Tasks.Length)
             {
                 GameInitializer.Instance.LoadGameWon();
             }
@@ -63,9 +62,13 @@ public class TaskController : MonoBehaviour
         return false;
     }
 
+    public string GetCurrentKey()
+    {
+        return Tasks[curTaskIndex].Key;
+    }
+
     void UpdateHUD()
     {
-
         if (curTaskIndex < Tasks.Length)
         {
             HUDController.Instance.SetHeader(Tasks[curTaskIndex].Header);

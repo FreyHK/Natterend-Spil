@@ -4,62 +4,53 @@ using UnityEngine;
 
 public class CoffeeController : MonoBehaviour
 {
-    public float maxCoffeeTime = 120f;
-    float curCoffeeTime;
+    public float maxTime = 10f;
+    float curTime;
 
     public GameObject[] coffeeBar;
     int curCoffeeBar;
 
-    public float maxTimeBeforeLoss = 20f;
-    float curTimeBeforeLoss;
+    PlayerMovement playerMovement;
 
     void Awake()
     {
-        curCoffeeBar = coffeeBar.Length;
-        curTimeBeforeLoss = maxTimeBeforeLoss;
-        curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
+        playerMovement = FindObjectOfType<PlayerMovement>();
+        RefreshCoffee();
     }
 
     void Update()
     {
-        if (curCoffeeBar <= 0)
-            return;
-
-        if (curTimeBeforeLoss <= 0)
+        if (Input.GetButtonDown("Sprint") && curCoffeeBar > 0)
         {
-            curCoffeeTime -= Time.deltaTime;
-        }
-        else
+            playerMovement.IsSprinting = true;
+        }else if (Input.GetButtonUp("Sprint") || curCoffeeBar <= 0)
         {
-            curTimeBeforeLoss -= Time.deltaTime;
+            playerMovement.IsSprinting = false;
+        }else if (playerMovement.IsSprinting)
+        {
+            RemoveCoffee();
         }
+    }
 
-        if (curCoffeeTime <= 0)
+    void RemoveCoffee()
+    {
+        curTime -= Time.deltaTime;
+
+        if (curTime <= 0)
         {
             coffeeBar[curCoffeeBar - 1].SetActive(false);
             curCoffeeBar--;
-            curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
-        }
-
-        if (curCoffeeBar <= 0)
-        {
-            CoffeeEmpty();
+            curTime = maxTime / coffeeBar.Length;
         }
     }
 
     public void RefreshCoffee()
     {
-        curCoffeeTime = maxCoffeeTime / coffeeBar.Length;
-        curCoffeeBar = coffeeBar.Length;       
-        curTimeBeforeLoss = maxTimeBeforeLoss;
+        curTime = maxTime / coffeeBar.Length;
+        curCoffeeBar = coffeeBar.Length;
         for (int i = 0; i < coffeeBar.Length; i++)
         {
             coffeeBar[i].SetActive(true);
         }
-    }
-
-    void CoffeeEmpty()
-    {
-        // do some shiitttt
     }
 }
