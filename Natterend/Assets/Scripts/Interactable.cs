@@ -33,7 +33,7 @@ public class Interactable : MonoBehaviour
 
     public void Interact()
     {
-        if (CanInteract() || !Conditional)
+        if (CanInteract())
         {
             TaskController.Instance.CompleteTask(Key);
             OnInteract.Invoke();
@@ -42,6 +42,6 @@ public class Interactable : MonoBehaviour
 
     public bool CanInteract()
     {
-        return TaskController.Instance.GetCurrentKey() == Key;
+        return TaskController.Instance.GetCurrentKey() == Key || !Conditional;
     }
 }

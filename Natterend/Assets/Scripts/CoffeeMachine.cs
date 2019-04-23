@@ -14,5 +14,6 @@ public class CoffeeMachine : MonoBehaviour
     public void RefreshCoffee()
     {      
         player.GetComponent<CoffeeController>().RefreshCoffee();
+        AudioManager.Instance.Play("RefillCoffee");
     }
 }
