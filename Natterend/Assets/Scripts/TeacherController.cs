@@ -115,13 +115,16 @@ public class TeacherController : MonoBehaviour
 
     bool CanSeePlayer()
     {
-        //Is player close enought?
-        float dist = Vector3.Distance(transform.position, playerTransform.position);
+        //Ignore y
+        Vector3 pos = new Vector3(transform.position.x, 0f, transform.position.z);
+        Vector3 ppos = new Vector3(playerTransform.position.x, 0f, playerTransform.position.z);
+        //Is player close enough?
+        float dist = Vector3.Distance(pos, ppos);
         if (dist > SightRange)
             return false;
 
         //Do we have direct line of sight?
-        Vector3 dir = (playerTransform.position + Vector3.up * 1.5f) - SightOrigin.position;
+        Vector3 dir = (playerTransform.position + Vector3.up * 2f) - SightOrigin.position;
         RaycastHit[] hits = Physics.RaycastAll(SightOrigin.position, dir, dist);
        
         for (int i = 0; i < hits.Length; i++)

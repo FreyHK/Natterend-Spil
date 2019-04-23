@@ -7,8 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed = 2f;
     public float SprintMultiplier = 1.8f;
 
+    public AudioClip[] StepSounds;
+
     Camera cam;
     Rigidbody body;
+    AudioSource source;
 
     float horizontalRot;
     float verticalRot;
@@ -17,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         cam = GetComponentInChildren<Camera>();
+        source = GetComponent<AudioSource>();
 
         horizontalRot = transform.eulerAngles.y;
         verticalRot = 0f;
@@ -68,6 +72,27 @@ public class PlayerMovement : MonoBehaviour
         {
             float speed = IsSprinting ? MoveSpeed * SprintMultiplier : MoveSpeed;
             body.MovePosition(body.position + move * speed * Time.fixedDeltaTime);
+
+            //Play sounds
+            PlayStepSounds();
+        }
+    }
+
+    int stepIndex = 0;
+    float cooldown = 0f;
+
+    float stepDuration = 2f;
+
+    void PlayStepSounds() {
+        cooldown += Time.deltaTime * stepDuration * (IsSprinting ? SprintMultiplier : 1f);
+       
+        if (cooldown >= 1f)
+        {
+            cooldown = 0f;
+            //Play
+            source.PlayOneShot(StepSounds[stepIndex]);
+            //Increment
+            stepIndex = (stepIndex + 1) % StepSounds.Length;
         }
     }
 }
