@@ -212,9 +212,10 @@ MonoBehaviour:
   - clipName: RefillCoffee
     clip: {fileID: 8300000, guid: a4ac74df4de5547079f8b398d6861ef5, type: 3}
     loop: 0
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}
+  AudioMixerGroup: {fileID: 24300002, guid: 6a0832489a2384a2cad49bc6aa16d472, type: 2}
 --- !u!4 &457061069
 Transform:
   m_ObjectHideFlags: 0
@@ -321,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1280864867
 MonoBehaviour:
   m_ObjectHideFlags: 0

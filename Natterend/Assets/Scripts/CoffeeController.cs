@@ -52,5 +52,8 @@ public class CoffeeController : MonoBehaviour
         {
             coffeeBar[i].SetActive(true);
         }
+        //Play sound
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.Play("RefillCoffee");
     }
 }
