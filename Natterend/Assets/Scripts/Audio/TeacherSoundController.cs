@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TeacherSoundController : MonoBehaviour
 {
-
     public AudioClip[] StepSounds;
 
     AudioSource source;

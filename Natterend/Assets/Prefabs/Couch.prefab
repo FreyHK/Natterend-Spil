@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 3835230877804277800}
   - component: {fileID: 235363876373571030}
   - component: {fileID: 3072129270442074951}
+  - component: {fileID: 2356267249175547036}
   m_Layer: 0
   m_Name: Couch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8612138990529035312
 Transform:
@@ -97,3 +98,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &2356267249175547036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862623995662515587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.729866, y: 2.0000014, z: 2.0314655}
+  m_Center: {x: 0, y: -0.0000004768373, z: -0.01573253}
