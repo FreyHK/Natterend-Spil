@@ -212,7 +212,7 @@ MonoBehaviour:
   - clipName: RefillCoffee
     clip: {fileID: 8300000, guid: a4ac74df4de5547079f8b398d6861ef5, type: 3}
     loop: 0
-    volume: 0.1
+    volume: 0.05
     pitch: 1
     source: {fileID: 0}
   AudioMixerGroup: {fileID: 24300002, guid: 6a0832489a2384a2cad49bc6aa16d472, type: 2}
