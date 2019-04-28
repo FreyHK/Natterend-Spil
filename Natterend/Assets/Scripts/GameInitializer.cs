@@ -78,7 +78,7 @@ public class GameInitializer : MonoBehaviour
         {
             c.a = t;
             overlayImage.color = c;
-            t += Time.deltaTime * 2f;
+            t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
 
@@ -106,7 +106,7 @@ public class GameInitializer : MonoBehaviour
         {
             c.a = 1 - t;
             overlayImage.color = c;
-            t += Time.deltaTime * 2f;
+            t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
     }

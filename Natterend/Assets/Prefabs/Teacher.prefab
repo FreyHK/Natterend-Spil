@@ -43,7 +43,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -51,10 +51,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 15
+  MinDistance: 3
+  MaxDistance: 25
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -211,6 +211,8 @@ MonoBehaviour:
   agent: {fileID: 383472480}
   waypointParent: {fileID: 0}
   SightOrigin: {fileID: 2982381220668955781}
+  Speed: 2.25
+  RunMultiplier: 1.5
 --- !u!136 &383472479
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  SprintMultiplier: 1.8
+  SprintMultiplier: 2.15
   StepSounds:
   - {fileID: 8300000, guid: 3ca8aeca261ac44b18e8e21180ea3bad, type: 3}
   - {fileID: 8300000, guid: e9b77bde227034266915e1a77e281df5, type: 3}
@@ -275,7 +275,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -402,7 +402,7 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 18
+  m_Range: 28
   m_SpotAngle: 70
   m_CookieSize: 10
   m_Shadows:
@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.191
+      value: 0.45300123
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.y
@@ -449,7 +449,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.649
+      value: 0.5619997
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalRotation.x

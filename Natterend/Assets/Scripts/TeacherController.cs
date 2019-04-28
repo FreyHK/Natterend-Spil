@@ -12,11 +12,16 @@ public class TeacherController : MonoBehaviour
 
     public Transform SightOrigin;
 
+    public float Speed = 1.8f;
+    public float RunMultiplier = 1.5f;
+
     Transform[] waypoints;
-    float SightRange = 10f;
+    float SightRange = 18f;
 
     int lastWaypoint = -1;
     int curWaypoint = -1;
+
+    Animator anim;
 
     enum State
     {
@@ -30,6 +35,7 @@ public class TeacherController : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         playerTransform = GameObject.FindWithTag("Player").transform;
 
         waypoints = new Transform[waypointParent.childCount];
@@ -57,9 +63,13 @@ public class TeacherController : MonoBehaviour
 
     void Patrolling()
     {
+        //Set speed
+        agent.speed = Speed;
+        //Animation speed
+        anim.speed = 1f;
+
         //Check if we can see player
-        float dist = Vector3.Distance(transform.position, playerTransform.position);
-        if (dist < SightRange)
+        if (CanSeePlayer())
         {
             //Switch to chase player
             currentState = State.Chasing;
@@ -90,6 +100,13 @@ public class TeacherController : MonoBehaviour
 
     void Chasing()
     {
+        print("CanSeePlayer: " + CanSeePlayer().ToString());
+
+        //Set speed
+        agent.speed = Speed * RunMultiplier;
+        //Animation speed
+        anim.speed = RunMultiplier;
+
         if (CanSeePlayer())
         {
             //Mark new player position
@@ -113,6 +130,8 @@ public class TeacherController : MonoBehaviour
         }
     }
 
+    float sightCooldown = 0f;
+
     bool CanSeePlayer()
     {
         //Ignore y
@@ -132,11 +151,22 @@ public class TeacherController : MonoBehaviour
             print("Hit " + hits[i].collider.name);
             //Did we hit anything besides ourselves and player?
             if (hits[i].transform != playerTransform && hits[i].transform != transform)
+            {
                 //Then sight is blocked.
+                sightCooldown = 0f;
                 return false;
+            }
+
         }
 
-        return true;
+        //We have seen player for over one second
+        if (sightCooldown > 1f)
+        {
+            return true;
+        }
+        sightCooldown += Time.deltaTime;
+
+        return false;
     }
 
     private void OnDrawGizmos()
