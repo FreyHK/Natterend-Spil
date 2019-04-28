@@ -215,6 +215,24 @@ MonoBehaviour:
     volume: 0.05
     pitch: 1
     source: {fileID: 0}
+  - clipName: PrinterPrinting
+    clip: {fileID: 8300000, guid: ee2c3bc1dd46d0946bd51db6f8001fee, type: 3}
+    loop: 0
+    volume: 0.03
+    pitch: 1
+    source: {fileID: 0}
+  - clipName: ComputerKeys
+    clip: {fileID: 8300000, guid: 7f4efa73017b24d9f9ae862852cfa90e, type: 3}
+    loop: 0
+    volume: 0.04
+    pitch: 1
+    source: {fileID: 0}
+  - clipName: BlackboardWriting
+    clip: {fileID: 8300000, guid: f38a2ebe0bc6844399a15c8e7dfe31c7, type: 3}
+    loop: 0
+    volume: 0.04
+    pitch: 1
+    source: {fileID: 0}
   AudioMixerGroup: {fileID: 24300002, guid: 6a0832489a2384a2cad49bc6aa16d472, type: 2}
 --- !u!4 &457061069
 Transform:

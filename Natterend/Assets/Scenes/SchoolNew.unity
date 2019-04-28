@@ -7510,15 +7510,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4847944550597511022, guid: b09733c1a6cb44ddeb740d357fca5f0e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5084842921687796794, guid: b09733c1a6cb44ddeb740d357fca5f0e,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847944550597511022, guid: b09733c1a6cb44ddeb740d357fca5f0e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1328615745496521068, guid: b09733c1a6cb44ddeb740d357fca5f0e,
         type: 3}
@@ -8232,6 +8232,80 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 750526208}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &763066141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763066142}
+  - component: {fileID: 763066144}
+  - component: {fileID: 763066143}
+  m_Layer: 5
+  m_Name: OverlayImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &763066142
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763066141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2026953919}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.000030517578}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &763066143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763066141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &763066144
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763066141}
+  m_CullTransparentMesh: 0
 --- !u!1001 &764514933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9875,28 +9949,34 @@ MonoBehaviour:
   - Header: Check your homework
     Key: check
     Interactable: {fileID: 1725553587}
-    Sound: 
+    Sound: BlackboardWriting
+    WaitTime: 4
     Completed: 0
   - Header: Get your laptop
     Key: getlaptop
     Interactable: {fileID: 225118963}
     Sound: 
+    WaitTime: 0
     Completed: 0
   - Header: Work (in bed)
     Key: work
     Interactable: {fileID: 1209906611}
-    Sound: 
+    Sound: ComputerKeys
+    WaitTime: 4
     Completed: 0
   - Header: Print homework
     Key: print
     Interactable: {fileID: 1640671067}
-    Sound: 
+    Sound: PrinterPrinting
+    WaitTime: 15
     Completed: 0
   - Header: Go to sleep
     Key: sleep
     Interactable: {fileID: 1284286684}
     Sound: 
+    WaitTime: 5
     Completed: 0
+  overlayImage: {fileID: 763066143}
 --- !u!1001 &935886484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21200,6 +21280,7 @@ RectTransform:
   m_Children:
   - {fileID: 711562957}
   - {fileID: 1496598096}
+  - {fileID: 763066142}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

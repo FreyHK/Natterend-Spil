@@ -12,6 +12,7 @@ public class TaskController : MonoBehaviour
         public string Key = "Key";
         public Interactable Interactable;
         public string Sound = "";
+        public float WaitTime = 5f;
 
         [HideInInspector]
         public bool Completed = false;
@@ -31,23 +32,6 @@ public class TaskController : MonoBehaviour
         UpdateHUD();
     }
 
-    void GetNextTask()
-    {
-        curTaskIndex++;
-
-        if (curTaskIndex < Tasks.Length)
-            Tasks[curTaskIndex].Interactable.SetSelected(true);
-    }
-
-
-    void CompleteCurrentTask()
-    {
-        Tasks[curTaskIndex].Completed = true;
-        Tasks[curTaskIndex].Interactable.SetSelected(false);
-    }
-
-
-        /*
     public Image overlayImage;
 
     IEnumerator CompleteCurrentTask()
@@ -62,8 +46,35 @@ public class TaskController : MonoBehaviour
             t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
+        c.a = 1f;
 
-        //float duration = AudioManager.Instance.GetClipLength()
+        Task task = Tasks[curTaskIndex];
+
+        if (task.Sound != "")
+        {
+            //Play
+            AudioManager.Instance.Play(task.Sound);
+
+            //Freeze
+            Time.timeScale = 0f;
+
+            //Wait = 0f;
+            while (t < task.WaitTime)
+            {
+                t += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            //Unfreeze
+            Time.timeScale = 1f;
+        }
+
+        //Complete task
+        task.Completed = true;
+        task.Interactable.SetSelected(false);
+
+        GetNextTask();
+        UpdateHUD();
 
         //Fade
         t = 0f;
@@ -74,26 +85,28 @@ public class TaskController : MonoBehaviour
             t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
+        c.a = 0f;
     }
-    */
 
-    public bool CompleteTask (string key)
+
+    void GetNextTask()
     {
-        if (key == Tasks[curTaskIndex].Key)
+        curTaskIndex++;
+
+        if (curTaskIndex < Tasks.Length)
+            Tasks[curTaskIndex].Interactable.SetSelected(true);
+    }
+
+    public void CompleteTask (string key)
+    {
+        if (key != Tasks[curTaskIndex].Key)
+            return;
+
+        if (curTaskIndex == Tasks.Length-1)
         {
-            CompleteCurrentTask();
-
-            GetNextTask();
-
-            UpdateHUD();
-
-            if (curTaskIndex == Tasks.Length)
-            {
-                GameInitializer.Instance.LoadGameWon();
-            }
-            return true;
-        }
-        return false;
+            GameInitializer.Instance.LoadGameWon();
+        }else
+            StartCoroutine(CompleteCurrentTask());
     }
 
     public string GetCurrentKey()
