@@ -148,7 +148,8 @@ public class TeacherController : MonoBehaviour
        
         for (int i = 0; i < hits.Length; i++)
         {
-            print("Hit " + hits[i].collider.name);
+            //print("Hit " + hits[i].collider.name);
+
             //Did we hit anything besides ourselves and player?
             if (hits[i].transform != playerTransform && hits[i].transform != transform)
             {
