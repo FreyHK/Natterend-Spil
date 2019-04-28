@@ -15,7 +15,13 @@ public class CoffeeController : MonoBehaviour
     void Awake()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
-        RefreshCoffee();
+
+        curTime = maxTime / coffeeBar.Length;
+        curCoffeeBar = coffeeBar.Length;
+        for (int i = 0; i < coffeeBar.Length; i++)
+        {
+            coffeeBar[i].SetActive(true);
+        }
     }
 
     void Update()
@@ -52,5 +58,7 @@ public class CoffeeController : MonoBehaviour
         {
             coffeeBar[i].SetActive(true);
         }
+        //Play sound
+        AudioManager.Instance.Play("RefillCoffee");
     }
 }

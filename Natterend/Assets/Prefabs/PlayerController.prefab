@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 8041832499774872001}
   - component: {fileID: 6071833419613171043}
   - component: {fileID: 6071833419613171044}
+  - component: {fileID: 175069289}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Player
@@ -209,7 +210,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  SprintMultiplier: 3
+  SprintMultiplier: 1.8
+  StepSounds:
+  - {fileID: 8300000, guid: 3ca8aeca261ac44b18e8e21180ea3bad, type: 3}
+  - {fileID: 8300000, guid: e9b77bde227034266915e1a77e281df5, type: 3}
+  - {fileID: 8300000, guid: 4171903884e5f4343b6ab7598c27c610, type: 3}
   IsSprinting: 0
 --- !u!114 &8041832499774872001
 MonoBehaviour:
@@ -257,6 +262,103 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!82 &175069289
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071833419613171040}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6a0832489a2384a2cad49bc6aa16d472,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7011877623548912348
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1856347136025526857}
   - component: {fileID: 2181431378392998673}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,13 +439,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: lommelygte
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.571
+      value: 0.191
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.y
@@ -351,23 +449,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.45
+      value: 0.649
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000011920929
+      value: -0.072443254
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000002026558
+      value: -0.016479077
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.70710695
+      value: 0.70027214
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071066
+      value: 0.7099996
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_RootOrder
@@ -375,18 +473,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -4.576
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -7.1960006
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 90.00001
+      value: 89.498
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9500000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f00f76f8c28480b913f7f89ac3ef18, type: 3}
 --- !u!4 &3901471621309348483 stripped
 Transform:
