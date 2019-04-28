@@ -46,6 +46,7 @@ public class TaskController : MonoBehaviour
             t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
+        c.a = 1f;
 
         Task task = Tasks[curTaskIndex];
 
@@ -84,6 +85,7 @@ public class TaskController : MonoBehaviour
             t += Time.unscaledDeltaTime * 2f;
             yield return null;
         }
+        c.a = 0f;
     }
 
 
