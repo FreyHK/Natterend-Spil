@@ -10773,8 +10773,8 @@ Transform:
   - {fileID: 317001555}
   - {fileID: 1675235327}
   - {fileID: 1884319380}
-  - {fileID: 7459908605881860560}
   - {fileID: 970206007}
+  - {fileID: 7459908605881860560}
   - {fileID: 1727379681}
   - {fileID: 1264821217}
   - {fileID: 1063708159}
@@ -11219,7 +11219,7 @@ Transform:
   - {fileID: 2057363960}
   - {fileID: 723583937}
   m_Father: {fileID: 947211717}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &974473359
 PrefabInstance:

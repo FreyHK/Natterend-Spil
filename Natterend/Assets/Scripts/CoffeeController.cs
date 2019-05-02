@@ -12,8 +12,12 @@ public class CoffeeController : MonoBehaviour
 
     PlayerMovement playerMovement;
 
+    public static CoffeeController Instance;
+
     void Awake()
     {
+        Instance = this;
+
         playerMovement = FindObjectOfType<PlayerMovement>();
 
         curTime = maxTime / coffeeBar.Length;
@@ -24,15 +28,14 @@ public class CoffeeController : MonoBehaviour
         }
     }
 
+    public bool CanSprint()
+    {
+        return curCoffeeBar > 0;
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown("Sprint") && curCoffeeBar > 0)
-        {
-            playerMovement.IsSprinting = true;
-        }else if (Input.GetButtonUp("Sprint") || curCoffeeBar <= 0)
-        {
-            playerMovement.IsSprinting = false;
-        }else if (playerMovement.IsSprinting)
+        if (playerMovement.currentMovement == PlayerMovement.MovementType.Sprinting)
         {
             RemoveCoffee();
         }

@@ -31,12 +31,12 @@ public class TeacherController : MonoBehaviour
 
     State currentState;
 
-    Transform playerTransform;
+    Transform camTransform;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        playerTransform = GameObject.FindWithTag("Player").transform;
+        camTransform = Camera.main.transform;
 
         waypoints = new Transform[waypointParent.childCount];
         for (int i = 0; i < waypointParent.childCount; i++)
@@ -100,8 +100,6 @@ public class TeacherController : MonoBehaviour
 
     void Chasing()
     {
-        print("CanSeePlayer: " + CanSeePlayer().ToString());
-
         //Set speed
         agent.speed = Speed * RunMultiplier;
         //Animation speed
@@ -110,11 +108,11 @@ public class TeacherController : MonoBehaviour
         if (CanSeePlayer())
         {
             //Mark new player position
-            agent.SetDestination(playerTransform.position);
+            agent.SetDestination(camTransform.position);
 
-            float dist = Vector3.Distance(transform.position, playerTransform.position);
+            float dist = Vector3.Distance(transform.position, camTransform.position);
             //Did we reach player?
-            if (dist < 2f)
+            if (dist < 3f)
             {
                 GameInitializer.Instance.LoadGameOver();
             }
@@ -136,14 +134,14 @@ public class TeacherController : MonoBehaviour
     {
         //Ignore y
         Vector3 pos = new Vector3(transform.position.x, 0f, transform.position.z);
-        Vector3 ppos = new Vector3(playerTransform.position.x, 0f, playerTransform.position.z);
+        Vector3 ppos = new Vector3(camTransform.position.x, 0f, camTransform.position.z);
         //Is player close enough?
         float dist = Vector3.Distance(pos, ppos);
         if (dist > SightRange)
             return false;
 
         //Do we have direct line of sight?
-        Vector3 dir = (playerTransform.position + Vector3.up * 2f) - SightOrigin.position;
+        Vector3 dir = camTransform.position - SightOrigin.position;
         RaycastHit[] hits = Physics.RaycastAll(SightOrigin.position, dir, dist);
        
         for (int i = 0; i < hits.Length; i++)
@@ -151,7 +149,7 @@ public class TeacherController : MonoBehaviour
             //print("Hit " + hits[i].collider.name);
 
             //Did we hit anything besides ourselves and player?
-            if (hits[i].transform != playerTransform && hits[i].transform != transform)
+            if (hits[i].transform != camTransform.root && hits[i].transform != transform)
             {
                 //Then sight is blocked.
                 sightCooldown = 0f;

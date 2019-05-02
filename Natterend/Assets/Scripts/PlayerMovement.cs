@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,12 +10,26 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioClip[] StepSounds;
 
+    [Space()]
+    public Collider DefaultCollider;
+    public Collider CrouchedCollider;
+
     Camera cam;
     Rigidbody body;
     AudioSource source;
 
     float horizontalRot;
     float verticalRot;
+
+    public enum MovementType
+    {
+        Walking,
+        Crouching,
+        Sprinting
+    }
+
+    [HideInInspector] public MovementType currentMovement;
+    float currentSpeed;
 
     void Start()
     {
@@ -28,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         //Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        currentMovement = MovementType.Walking;
+        currentSpeed = MoveSpeed;
     }
 
     void OnDestroy()
@@ -36,6 +54,50 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    #region Input
+    private void Update()
+    {
+        if (currentMovement == MovementType.Walking)
+            WalkingInput();
+        else if (currentMovement == MovementType.Crouching && Input.GetButtonUp("Crouch"))
+        {
+            currentMovement = MovementType.Walking;
+            currentSpeed = MoveSpeed;
+            //Move camera up
+            cam.transform.DOLocalMoveY(2f, .25f);
+            //Change collider
+            DefaultCollider.enabled = true;
+            CrouchedCollider.enabled = false;
+        }
+        else if (currentMovement == MovementType.Sprinting && Input.GetButtonUp("Sprint") || !CoffeeController.Instance.CanSprint())
+        {
+            currentMovement = MovementType.Walking;
+            currentSpeed = MoveSpeed;
+        }
+    }
+
+    void WalkingInput()
+    {
+        if (Input.GetButtonDown("Crouch"))
+        {
+            currentMovement = MovementType.Crouching;
+            currentSpeed = MoveSpeed * .5f;
+
+            //Move camera down
+            cam.transform.DOLocalMoveY(1f, .25f);
+            //Change collider
+            CrouchedCollider.enabled = true;
+            DefaultCollider.enabled = false;
+        }
+        else if (Input.GetButtonDown("Sprint") && CoffeeController.Instance.CanSprint())
+        {
+            currentMovement = MovementType.Sprinting;
+            currentSpeed = MoveSpeed * SprintMultiplier;
+        }
+    }
+
+    #endregion
 
     void FixedUpdate()
     {
@@ -60,8 +122,6 @@ public class PlayerMovement : MonoBehaviour
         cam.transform.localRotation = Quaternion.Euler(verticalRot, 0f, 0f);
     }
 
-    [HideInInspector] public bool IsSprinting = false;
-
     void Movement()
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
@@ -70,8 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (move != Vector3.zero)
         {
-            float speed = IsSprinting ? MoveSpeed * SprintMultiplier : MoveSpeed;
-            body.MovePosition(body.position + move * speed * Time.fixedDeltaTime);
+            body.MovePosition(body.position + move * currentSpeed * Time.fixedDeltaTime);
 
             //Play sounds
             PlayStepSounds();
@@ -84,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
     float stepDuration = 2f;
 
     void PlayStepSounds() {
-        cooldown += Time.deltaTime * stepDuration * (IsSprinting ? SprintMultiplier : 1f);
+        cooldown += Time.deltaTime * stepDuration * (currentMovement == MovementType.Sprinting ? SprintMultiplier : 1f);
        
         if (cooldown >= 1f)
         {
