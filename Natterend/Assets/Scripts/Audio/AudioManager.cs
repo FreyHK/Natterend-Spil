@@ -31,12 +31,20 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string _clipName)
     {
+        //print("Playing sound: " + _clipName);
         SoundClip s = Array.Find(_clips, SoundClip => SoundClip.clipName == _clipName);
+
+        if (s == null) {
+            Debug.LogWarning("Could not find sound: " + _clipName);
+            return;
+        }
+
         s.source.Play();
 
         //Put ourselves on top of player
         GameObject player = GameObject.FindWithTag("Player");
-        transform.position = player.transform.position;
+        if (player != null)
+            transform.position = player.transform.position;
     }
 
     public void Stop(string _clipName)

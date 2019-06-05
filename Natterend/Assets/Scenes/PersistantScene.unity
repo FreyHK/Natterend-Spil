@@ -233,6 +233,12 @@ MonoBehaviour:
     volume: 0.04
     pitch: 1
     source: {fileID: 0}
+  - clipName: MenuMusic
+    clip: {fileID: 8300000, guid: 3decf8b2614da4ae8a032f8f704cf3ca, type: 3}
+    loop: 0
+    volume: 0.035
+    pitch: 1
+    source: {fileID: 0}
   AudioMixerGroup: {fileID: 24300002, guid: 6a0832489a2384a2cad49bc6aa16d472, type: 2}
 --- !u!4 &457061069
 Transform:

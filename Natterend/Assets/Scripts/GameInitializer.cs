@@ -20,6 +20,7 @@ public class GameInitializer : MonoBehaviour
     private void Start()
     {
         Instance = this;
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         //Hide overlayimage
         Color c = overlayImage.color;
@@ -31,8 +32,17 @@ public class GameInitializer : MonoBehaviour
             loadedScene = SceneManager.LoadScene(1, loadParameters);
         }
         else
+        {
             //Find the level, that we loaded in from editor.
             loadedScene = SceneManager.GetSceneAt(1);
+        }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        print("Scene Loaded");
+        //Remember loaded scene (used when unloading)
+        SceneManager.SetActiveScene(scene);
     }
 
     public void LoadMenu()
@@ -78,9 +88,11 @@ public class GameInitializer : MonoBehaviour
         {
             c.a = t;
             overlayImage.color = c;
-            t += Time.unscaledDeltaTime * 2f;
+            t += Time.deltaTime * 2f;
             yield return null;
         }
+        c.a = 1f;
+        overlayImage.color = c;
 
         //Unload old scene
         AsyncOperation asyncUnload = SceneManager.UnloadSceneAsync(loadedScene);
@@ -92,10 +104,7 @@ public class GameInitializer : MonoBehaviour
         {
             yield return null;
         }
-        //Remember loaded scene (used when unloading)
         loadedScene = SceneManager.GetSceneAt(1);
-
-        SceneManager.SetActiveScene(loadedScene);
 
         //Reset flag
         IsLoading = false;
@@ -106,8 +115,10 @@ public class GameInitializer : MonoBehaviour
         {
             c.a = 1 - t;
             overlayImage.color = c;
-            t += Time.unscaledDeltaTime * 2f;
+            t += Time.deltaTime * 2f;
             yield return null;
         }
+        c.a = 0;
+        overlayImage.color = c;
     }
 }
