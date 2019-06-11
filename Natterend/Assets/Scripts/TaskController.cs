@@ -18,8 +18,7 @@ public class TaskController : MonoBehaviour
         public bool Completed = false;
     }
 
-    [SerializeField]
-    Task[] Tasks;
+    [SerializeField] Task[] Tasks;
 
     int curTaskIndex = -1;
 

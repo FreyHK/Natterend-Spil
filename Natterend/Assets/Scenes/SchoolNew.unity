@@ -3139,7 +3139,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
-  renderer: {fileID: 1007324316}
+  meshRenderer: {fileID: 1007324316}
 --- !u!1 &231513659
 GameObject:
   m_ObjectHideFlags: 0
@@ -8940,7 +8940,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
-  renderer: {fileID: 0}
+  meshRenderer: {fileID: 0}
 --- !u!1001 &741161671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15135,6 +15135,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1306894441}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1316570929 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3242079396820882584, guid: 91a52d105796dd64988852707a67ecf0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3242079395986227840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1323887420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19279,7 +19285,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
-  renderer: {fileID: 1120920107}
+  meshRenderer: {fileID: 1120920107}
 --- !u!1001 &1643818889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19869,7 +19875,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnSelectedMaterial: {fileID: 2100000, guid: 253590317c0fd4b6298aefcbe8d06cfc, type: 2}
-  renderer: {fileID: 1872666602}
+  meshRenderer: {fileID: 1872666602}
 --- !u!1 &1727379680
 GameObject:
   m_ObjectHideFlags: 0
@@ -25026,6 +25032,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
+    - target: {fileID: 3242079396923897651, guid: 91a52d105796dd64988852707a67ecf0,
+        type: 3}
+      propertyPath: meshRenderer
+      value: 
+      objectReference: {fileID: 1316570929}
+    - target: {fileID: 3242079397000505948, guid: 91a52d105796dd64988852707a67ecf0,
+        type: 3}
+      propertyPath: meshRenderer
+      value: 
+      objectReference: {fileID: 1316570929}
     - target: {fileID: 3242079397305225487, guid: 91a52d105796dd64988852707a67ecf0,
         type: 3}
       propertyPath: m_LocalPosition.x

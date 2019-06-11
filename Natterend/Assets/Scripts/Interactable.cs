@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
 
     public Material OnSelectedMaterial;
 
-    public MeshRenderer renderer;
+    public MeshRenderer meshRenderer;
     Material[] mats;
 
     public void SetSelected(bool s)
@@ -20,14 +20,14 @@ public class Interactable : MonoBehaviour
         if (s)
         {
             //Remember original materials
-            mats = renderer.materials;
+            mats = meshRenderer.materials;
             //Set new
-            renderer.material = OnSelectedMaterial;
+            meshRenderer.material = OnSelectedMaterial;
         }
         else
         {
             //Set back to original
-            renderer.materials = mats;
+            meshRenderer.materials = mats;
         }
     }
 

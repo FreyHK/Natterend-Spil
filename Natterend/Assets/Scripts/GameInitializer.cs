@@ -40,7 +40,6 @@ public class GameInitializer : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        print("Scene Loaded");
         //Remember loaded scene (used when unloading)
         SceneManager.SetActiveScene(scene);
     }
